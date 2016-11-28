@@ -1,0 +1,38 @@
+﻿<h3 class="panel-heading">Testing Urls</h3>
+<div class="panel-body">
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Test Name</th>
+                <th>Interviewee</th>
+                <th>Number of Runs</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Validity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="testingUrl in testingUrls">
+                <td>{{testingUrl.TestName}}</td>
+                <td>{{testingUrl.Interviewee}}</td>
+                <td>{{testingUrl.NumberOfRuns}}</td>
+                <td>{{testingUrl.AllowedStartDate}}</td>
+                <td>{{testingUrl.AllowedEndDate}}</td>
+                <td><input type="checkbox" ng-checked="testingUrl.IsValid" disabled /></td>
+
+
+                <td class="text-center">
+                    <a class="btn btn-xs btn-primary" href="{{'/Test/' + testingUrl.Guid}}">Go to Testing</a>                   
+                    <button class="btn btn-xs btn-primary" ng-click="delete(testingUrl)">
+                        Delete
+                    </button>                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-primary" ng-click="editOrCreate()">New</button>
+    </div>
+</div>

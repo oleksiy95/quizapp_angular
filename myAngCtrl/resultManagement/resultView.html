@@ -1,0 +1,38 @@
+﻿<h3 class="panel-heading">Testing Results</h3>
+<div class="panel-body">
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Test Name</th>
+                <th>Interviewee</th>
+                <th>Score</th>
+                <th>Tried Question</th>
+                <th>Duration</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Validity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in results">
+                <td>{{result.TestName}}</td>
+                <td>{{result.Interviewee}}</td>
+                <td>{{result.Score.toFixed(2)}}</td>
+                <td>{{result.QuestionTried}} of {{result.TotalQuestions}}</td>
+                <td>{{result.Duration.slice(0,8)}}</td>
+                <td>{{result.TestingStartDateTime}}</td>
+                <td>{{result.TestingEndDateTime}}</td>
+                <td><input type="checkbox" ng-checked="result.IsValid" disabled /></td>
+
+
+                <td class="text-center">
+                    <button class="btn btn-xs btn-primary" ng-click="delete(result)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

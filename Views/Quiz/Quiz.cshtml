@@ -1,0 +1,56 @@
+﻿@model QuizApp.ViewModel.Managing.TestingUrlViewModel
+
+@{
+    Layout = null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Quiz</title>
+    @Styles.Render("~/Content/admin-css")
+    @Styles.Render("~/Content/jPages-css")
+    @Styles.Render("~/Content/quiz-css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    <script src="~/myAngCtrl/quiz/quizModule.js"></script>   
+    
+</head>
+<body style="padding-top:0px ">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 style="color:#428bca; text-align:center">@Model.TestName</h1>
+            <h3 style="color:#428bca; text-align:center">@ViewBag.Description</h3>            
+        </div>       
+        <div ng-app="quizModule" ng-controller="quizCtrl">
+            <div ng-init="testingUrlGuid='@Model.Guid'" ng-hide="hideInfo">
+                <h3>Questions Count <span class="label label-default">@ViewBag.qCount</span></h3>
+                <h3>Time For Test <span class="label label-default">@ViewBag.Time</span></h3>
+                                
+                @if (string.IsNullOrEmpty(Model.Interviewee))
+                {
+                    <h3>Your name <span class="label label-default"><input style="border-radius:6px" ng-model="Interviewee" placeholder="Enter your name"/></span></h3>           
+                }
+                else
+                {
+                    <h3>Your name <span class="label label-default">@ViewBag.Interviewee</span></h3>                    
+                }
+                <button type="button" class="btn btn-primary btn-lg" ng-click="getInfo()" ng-disabled="myForm.user.$dirty && myForm.user.$invalid">Start Test</button>
+                <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />                
+            </div>
+            <div ng-view></div>            
+           
+        </div>                
+    </div>    
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jPages")
+    @Scripts.Render("~/bundles/angular-ui")
+    @Scripts.Render("~/bundles/material-bootstrap-js")
+    
+</body>
+</html>

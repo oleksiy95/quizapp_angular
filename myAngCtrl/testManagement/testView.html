@@ -1,0 +1,42 @@
+﻿<h3 class="panel-heading">Tests</h3>
+<div class="panel-body">
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Test Time</th>
+                <th>Question Time</th>
+                <th>Validity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="test in tests">
+                <td>{{test.Name}}</td>
+                <td>{{test.Description}}</td>
+                <td>{{test.TestTimeLimit}}</td>
+                <td>{{test.QuestionTimeLimit}}</td>
+                <td><input type="checkbox" ng-checked="test.IsValid" disabled /></td>
+
+                
+                <td class="text-center">
+                    <a class="btn btn-xs btn-primary" href="{{'/CSV/' + test.Guid}}">Download Test Results</a>
+                    <button class="btn btn-xs btn-primary" ng-click="getQuestions(test)">
+                        Questions
+                    </button>
+                    <button class="btn btn-xs btn-primary" ng-click="delete(test)">
+                        Delete
+                    </button>
+                    <button class="btn btn-xs btn-primary" ng-click="editOrCreate(test)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>        
+        <button class="btn btn-primary" ng-click="editOrCreate()">New</button>
+    </div>
+</div>

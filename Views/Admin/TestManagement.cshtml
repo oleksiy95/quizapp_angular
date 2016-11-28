@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "TestManagement";
+}
+
+<script src="~/myAngCtrl/testManagement/testManagementModule.js"></script>    
+<script src="~/myAngCtrl/testManagement/testCtrl.js"></script>
+<script src="~/myAngCtrl/testManagement/testQuestionCtrl.js"></script>
+<script src="~/myAngCtrl/testManagement/answerCtrl.js"></script>
+
+<div ng-app="testManagement">
+    <div ng-controller="testCtrl">
+        <div ng-controller="testQuestionCtrl">
+            <div ng-controller="answerCtrl">
+                
+                <div ng-view class="panel panel-primary"></div>
+            </div>
+        </div>
+    </div> 
+</div>
+ 

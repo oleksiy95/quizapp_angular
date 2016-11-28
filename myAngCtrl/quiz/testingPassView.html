@@ -1,0 +1,29 @@
+﻿<h1 style="color:#428bca; text-align:center; font-weight:800">{{Timer}}</h1>
+<div id="itemContainer">
+    <div class="panel panel-primary" ng-repeat="question in testPass.Questions">
+        <h3 class="panel-heading">{{question.Instance}}</h3>
+        <div class="panel-body">
+            <div ng-repeat="answer in question.Answers">
+                <input name="{{question.Guid}}" id="{{answer.Guid}}" type="{{whatType(question.Multiple)}}" /> <label for="{{answer.Guid}}">{{answer.Instance}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="holder"></div>
+<button type="button" class="btn btn-primary btn-lg" ng-click="finishTest()">Finish</button>
+
+
+<script>
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $("div.holder").jPages({
+                containerID: "itemContainer"
+            });
+
+        }, 10);
+        
+    });    
+</script>
+
+

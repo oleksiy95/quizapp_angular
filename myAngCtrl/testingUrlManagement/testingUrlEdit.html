@@ -1,0 +1,30 @@
+﻿<h3 class="panel-heading"></h3>
+<div class="panel-body">
+    <div class="form-group">
+        <label>Test</label>
+        <select class="form-control" ng-model="currentTestingUrl.TestGuid">
+            <option ng-repeat="test in tests" value="{{test.Guid}}">{{test.Name}}</option>
+        </select>
+        
+    </div>
+    <div class="form-group">
+        <label>Interviewee</label>
+        <input class="form-control" ng-model="currentTestingUrl.Interviewee" />
+    </div>
+    <div class="form-group">
+        <label>Number of Runs</label>
+        <input class="form-control" ng-model="currentTestingUrl.NumberOfRuns" />
+    </div>
+    <div class="form-group">
+        <label>Start Date</label>
+        <input class="form-control" ng-model="currentTestingUrl.AllowedStartDate" type="datetime-local"/>
+    </div>
+
+    <div class="form-group">
+        <label>End Date</label>
+        <input class="form-control" ng-model="currentTestingUrl.AllowedEndDate" type="datetime-local"/>
+    </div>
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />
+    <button class="btn btn-primary" ng-click="saveEdit(currentTestingUrl)">Save</button>
+    <button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button>
+</div>
