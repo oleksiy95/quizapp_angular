@@ -90,3 +90,7 @@ question {
 .has-padding {
     padding: 10px;
 }
+
+form .ng-invalid.ng-dirty{
+            border-color:red;
+        }
