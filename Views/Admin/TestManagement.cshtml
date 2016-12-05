@@ -3,12 +3,9 @@
     ViewBag.Title = "TestManagement";
 }
 
-<script src="~/myAngCtrl/testManagement/testManagementModule.js"></script>    
-<script src="~/myAngCtrl/testManagement/testCtrl.js"></script>
-<script src="~/myAngCtrl/testManagement/testQuestionCtrl.js"></script>
-<script src="~/myAngCtrl/testManagement/answerCtrl.js"></script>
+@Scripts.Render("~/bundles/testManagement")
 
-<div ng-app="testManagement">
+<div ng-app="quizApp">
     <div ng-controller="testCtrl">
         <div ng-controller="testQuestionCtrl">
             <div ng-controller="answerCtrl">
@@ -18,4 +15,6 @@
         </div>
     </div> 
 </div>
+
+
  

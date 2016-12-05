@@ -310,26 +310,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="myAngCtrl\quizApp.js" />
     <Content Include="myAngCtrl\quiz\finishView.html" />
+    <Content Include="myAngCtrl\quiz\quizCtrl.js" />
     <Content Include="myAngCtrl\quiz\quizModule.js" />
+    <Content Include="myAngCtrl\quiz\quizRouteConfig.js" />
     <Content Include="myAngCtrl\quiz\testingPassView.html" />
     <Content Include="myAngCtrl\resultManagement\resultCtrl.js" />
-    <Content Include="myAngCtrl\resultManagement\resultModule.js" />
+    <Content Include="myAngCtrl\resultManagement\resultRouteConfig.js" />
     <Content Include="myAngCtrl\resultManagement\resultView.html" />
     <Content Include="myAngCtrl\testingUrlManagement\testingUrlCtrl.js" />
     <Content Include="myAngCtrl\testingUrlManagement\testingUrlEdit.html" />
-    <Content Include="myAngCtrl\testingUrlManagement\testingUrlModule.js" />
+    <Content Include="myAngCtrl\testingUrlManagement\testingUrlRouteConfig.js" />
     <Content Include="myAngCtrl\testingUrlManagement\testingUrlView.html" />
-    <Content Include="myAngCtrl\testManagement\answerCtrl.js" />
-    <Content Include="myAngCtrl\testManagement\answerEdit.html" />
-    <Content Include="myAngCtrl\testManagement\answerView.html" />
-    <Content Include="myAngCtrl\testManagement\testCtrl.js" />
-    <Content Include="myAngCtrl\testManagement\testEdit.html" />
-    <Content Include="myAngCtrl\testManagement\testManagementModule.js" />
-    <Content Include="myAngCtrl\testManagement\testQuestionCtrl.js" />
-    <Content Include="myAngCtrl\testManagement\testQuestionsEdit.html" />
-    <Content Include="myAngCtrl\testManagement\testQuestionsView.html" />
-    <Content Include="myAngCtrl\testManagement\testView.html" />
+    <Content Include="myAngCtrl\testManagement\answers\answerCtrl.js" />
+    <Content Include="myAngCtrl\testManagement\answers\answerEdit.html" />
+    <Content Include="myAngCtrl\testManagement\answers\answerView.html" />
+    <Content Include="myAngCtrl\testManagement\tests\testCtrl.js" />
+    <Content Include="myAngCtrl\testManagement\tests\testEdit.html" />
+    <Content Include="myAngCtrl\testManagement\questions\testQuestionCtrl.js" />
+    <Content Include="myAngCtrl\testManagement\questions\testQuestionsEdit.html" />
+    <Content Include="myAngCtrl\testManagement\questions\testQuestionsView.html" />
+    <Content Include="myAngCtrl\testManagement\testRouteConfig.js" />
+    <Content Include="myAngCtrl\testManagement\tests\testView.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-messages.js" />
@@ -424,6 +427,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="myAngCtrl\services\" />
     <Folder Include="Scripts\functionality\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,7 +15,7 @@
     @Styles.Render("~/Content/quiz-css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/angular")
-    <script src="~/myAngCtrl/quiz/quizModule.js"></script>   
+    @Scripts.Render("~/bundles/quizManagement")  
     
 </head>
 <body style="padding-top:0px ">
@@ -24,7 +24,7 @@
             <h1 style="color:#428bca; text-align:center">@Model.TestName</h1>
             <h3 style="color:#428bca; text-align:center">@ViewBag.Description</h3>            
         </div>       
-        <div ng-app="quizModule" ng-controller="quizCtrl">
+        <div ng-app="quizApp" ng-controller="quizCtrl">
             <div ng-init="testingUrlGuid='@Model.Guid'" ng-hide="hideInfo">
                 <h3>Questions Count <span class="label label-default">@ViewBag.qCount</span></h3>
                 <h3>Time For Test <span class="label label-default">@ViewBag.Time</span></h3>
@@ -46,10 +46,10 @@
     </div>    
     
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jPages")
-    @Scripts.Render("~/bundles/angular-ui")
+    
     @Scripts.Render("~/bundles/material-bootstrap-js")
     
 </body>

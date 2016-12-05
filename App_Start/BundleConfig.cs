@@ -25,40 +25,28 @@ namespace QuizApp
                       "~/Scripts/angular-aria/angular-aria.min.js",
                       "~/Scripts/angular-material/angular-material.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
-                      "~/Scripts/angular-ui/ui-bootstrap.js",
-                      "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                      "~/Scripts/angular-ui/datetime-picker.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/testManagement").Include(
+                "~/MyAngCtrl/quizApp.js",
+                "~/MyAngCtrl/testManagement/testRouteConfig.js",
+                "~/MyAngCtrl/testManagement/tests/testCtrl.js",
+                "~/MyAngCtrl/testManagement/questions/testQuestionCtrl.js",
+                "~/MyAngCtrl/testManagement/answers/answerCtrl.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/common-dep").Include(
-                      "~/webApp/common/ngclipboard/ngclip.min.js",
-                      "~/webApp/common/ngDialog.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/testingUrlManagement").Include(
+                "~/MyAngCtrl/quizApp.js",
+                "~/MyAngCtrl/testingUrlManagement/testingUrlRouteConfig.js",
+                "~/MyAngCtrl/testingUrlManagement/testingUrlCtrl.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/managing").Include(
-                      "~/webApp/quizApp.js",
+            bundles.Add(new ScriptBundle("~/bundles/resultManagement").Include(
+                "~/MyAngCtrl/quizApp.js",
+                "~/MyAngCtrl/resultManagement/resultRouteConfig.js",
+                "~/MyAngCtrl/resultManagement/resultCtrl.js"));
 
-                      "~/webApp/services/convertionService.js",
-                      "~/webApp/services/managingService.js",
+            bundles.Add(new ScriptBundle("~/bundles/quizManagement").Include(
+               "~/MyAngCtrl/quizApp.js",
+               "~/MyAngCtrl/quiz/quizRouteConfig.js",
+               "~/MyAngCtrl/quiz/quizCtrl.js"));
 
-                      "~/webApp/managing/testingResultManagingController.js",
-                      "~/webApp/managing/testingUrlManagingController.js",
-                      "~/webApp/managing/testManagingController.js",
-
-                      "~/webApp/managing/answer/answer.js",
-                      "~/webApp/managing/question/question.js",
-                      "~/webApp/managing/test/test.js",
-                      "~/webApp/managing/testingResult/testingResult.js",
-                      "~/webApp/managing/testingUrl/testingUrl.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/quiz-passing").Include(
-                      "~/webApp/quizApp.js",
-                      "~/webApp/common/timer.js",
-
-                      "~/webApp/services/convertionService.js",
-                      "~/webApp/services/quizPassingService.js",
-
-                      "~/webApp/quizPassing/quizPassingController.js",
-                      "~/webApp/quizPassing/questionPassing/questionPassing.js"));
 
             bundles.Add(new StyleBundle("~/Content/admin-css").Include(
                       "~/Content/bootstrap.css",

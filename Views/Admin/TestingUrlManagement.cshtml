@@ -2,10 +2,9 @@
 @{
     ViewBag.Title = "TestingUrlManagement";
 }
-<script src="~/myAngCtrl/testingUrlManagement/testingUrlModule.js"></script>
-<script src="~/myAngCtrl/testingUrlManagement/testingUrlCtrl.js"></script>
+@Scripts.Render("~/bundles/testingUrlManagement")
 
-<div ng-app="testingUrlManagement">
+<div ng-app="quizApp">
     <div ng-controller="testingUrlCtrl">                   
         <div ng-view class="panel panel-primary"></div>            
     </div>
