@@ -1,5 +1,5 @@
 ﻿angular.module('quizApp')
- .controller("quizCtrl", function ($scope, $rootScope, $http, $location, $timeout, $interval) {
+ .controller("quizCtrl", function ($scope, $location, $timeout, $interval, $requestService) {
 
      $scope.testPassing = {};
 
@@ -7,7 +7,9 @@
      //get tests info and start test
      $scope.getInfo = function () {
          $scope.showLoader = true;
-         $http.get("/Quiz/GetInfoAndStartTest?testingUrlGuid=" + $scope.testingUrlGuid).success(function (data) {
+         $requestService.startTest($scope.testingUrlGuid, function (data) {
+         
+         //$http.get("/Quiz/GetInfoAndStartTest?testingUrlGuid=" + $scope.testingUrlGuid).success(function (data) {
              $scope.testPass = data;
              $scope.showLoader = false;
              $scope.hideInfo = true;
@@ -40,7 +42,7 @@
              }
 
 
-         });
+     });
      }
 
 
@@ -88,12 +90,8 @@
          $scope.testPassing.Interviewee = ($scope.Interviewee != undefined) ? $scope.Interviewee : $scope.testPass.Interviewee;
          $scope.testPassing.AttemptGuid = $scope.testPass.AttemptGuid;
          $scope.testPassing.TestingGuid = $scope.testingUrlGuid;
-         $http.post("/Quiz/FinishTest", $scope.testPassing).success(function (testingUrl) {
+         $requestService.finishTest($scope.testPassing, function () {
              $location.path("/finishTest");
          });
-
-
      }
-
-
  });

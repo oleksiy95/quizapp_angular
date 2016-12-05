@@ -1,5 +1,5 @@
 ﻿angular.module('quizApp')
-    .controller("answerCtrl", function ($scope, $http, $location) {
+    .controller("answerCtrl", function ($scope, $location, $requestService) {
 
         //variable for showing ajax-loader
         $scope.showLoaderAnswers = false;    
@@ -8,31 +8,26 @@
         $scope.refreshAnswer = function () {
             $location.path("/view/answers");
             $scope.showLoaderAnswers = true;
-            $http.get("/Apilike/GetAnswersByQuestionGuid?questionGuid=" + $scope.questionForAnswer.Guid).success(function (data) {
+            $requestService.getAnswers($scope.questionForAnswer.Guid, function (data) {
                 $scope.answers = data;
-                
                 $scope.showLoaderAnswers = false;
-            });
+            })
+           
         }
         //create new answer, make POST request to Apilike/CreateAnswer
         $scope.createAnswer = function (answer) {
             $scope.showLoaderAnswers = true;
-            $http.post("/Apilike/CreateAnswer?questionGuid=" + $scope.questionForAnswer.Guid, answer).success(function (answer) {
+            $requestService.createAnswer($scope.questionForAnswer.Guid, answer, function () {
                 $scope.refreshAnswer();
-            });
-        }
-    
+            });            
+        }    
         //delete current answer
         $scope.deleteAnswer = function (answer) {
             $scope.showLoaderAnswers = true;
-            $http({
-                method: "POST",
-                url: "/Apilike/RemoveAnswer?answerGuid=" + answer.Guid
-            }).success(function () {
+            $requestService.deleteAnswer(answer.Guid, function () {
                 $scope.refreshAnswer();
-            });
+            })            
         }
-
         //get empty answer and open answerEdit.html
         $scope.editOrCreateAnswer = function (answer) {
             $scope.currentAnswer = {};
@@ -50,13 +45,7 @@
             $location.path("/view/answers");
             $scope.showLoaderAnswers = false;
         }
-
-        //$scope.$on("sendQuestionGuid", function (event, args) {
-        //    //get question from testQuestionCtrl
-        //    $scope.questionForAnswer = args.questionForAnswer;
-        //    $scope.refreshAnswer();
-        //});
-
+        
         $scope.getAnswers = function (question) {
             $scope.questionForAnswer = question;
             $scope.refreshAnswer();

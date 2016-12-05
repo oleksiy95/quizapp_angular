@@ -28,6 +28,7 @@ namespace QuizApp
             bundles.Add(new ScriptBundle("~/bundles/testManagement").Include(
                 "~/MyAngCtrl/quizApp.js",
                 "~/MyAngCtrl/testManagement/testRouteConfig.js",
+                "~/MyAngCtrl/services/requestService.js",
                 "~/MyAngCtrl/testManagement/tests/testCtrl.js",
                 "~/MyAngCtrl/testManagement/questions/testQuestionCtrl.js",
                 "~/MyAngCtrl/testManagement/answers/answerCtrl.js"));
@@ -35,16 +36,19 @@ namespace QuizApp
             bundles.Add(new ScriptBundle("~/bundles/testingUrlManagement").Include(
                 "~/MyAngCtrl/quizApp.js",
                 "~/MyAngCtrl/testingUrlManagement/testingUrlRouteConfig.js",
+                "~/MyAngCtrl/services/requestService.js",
                 "~/MyAngCtrl/testingUrlManagement/testingUrlCtrl.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/resultManagement").Include(
                 "~/MyAngCtrl/quizApp.js",
                 "~/MyAngCtrl/resultManagement/resultRouteConfig.js",
+                "~/MyAngCtrl/services/requestService.js",
                 "~/MyAngCtrl/resultManagement/resultCtrl.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/quizManagement").Include(
                "~/MyAngCtrl/quizApp.js",
                "~/MyAngCtrl/quiz/quizRouteConfig.js",
+               "~/MyAngCtrl/services/requestService.js",
                "~/MyAngCtrl/quiz/quizCtrl.js"));
 
 

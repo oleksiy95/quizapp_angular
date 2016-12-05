@@ -1,5 +1,5 @@
 ﻿angular.module('quizApp')
-    .controller("testCtrl", function ($scope, $rootScope, $http, $location) {
+    .controller("testCtrl", function ($scope, $location, $requestService) {
 
         //variable for showing ajax-loader
         $scope.showLoader = false;
@@ -9,41 +9,36 @@
         //get all tests from model
         $scope.refresh = function () {
             $location.path("/view/tests");
-            $scope.showLoader = true;
-            $http.get("/Admin/GetAllTests").success(function (data) {
+            $scope.showLoader = true;           
+            $requestService.getTests(function (data) {
                 $scope.tests = data;
                 
                 $scope.showLoader = false;
-            });
+            })
+            
+            
         }
         //create new test, make POST request to Apilike/CreateTest
         $scope.create = function (test) {
             $scope.showLoader = true;
-            $http.post("/Apilike/CreateTest", test).success(function (test) {
+            $requestService.createTest(test, function() {
                 $scope.refresh();
-            });
+            });            
         }
         //update current test
         $scope.update = function (test) {
             $scope.showLoader = true;
-            $http({
-                url: "/Apilike/UpdateTest?testGuid=" + test.Guid,
-                method: "POST",
-                data: test
-            }).success(function (modifiedTest) {
-            
+            $requestService.updateTest(test, test.Guid, function () {
                 $scope.refresh();
-            });
+            });               
+            
         }
         //delete current test
         $scope.delete = function (test) {
             $scope.showLoader = true;
-            $http({
-                method: "POST",
-                url: "/Apilike/RemoveTest?testGuid=" + test.Guid
-            }).success(function () {
+            $requestService.deleteTest(test.Guid, function () {
                 $scope.refresh();
-            });
+            })           
         }
 
         //get current or empty test and open testEdit.html
@@ -65,16 +60,7 @@
             $scope.currentTest = {};
             $location.path("/view/tests");
             $scope.showLoader = false;
-        }
-
-    //    $scope.getQuestions = function(test){
-    //        //send value of test to questions ctrl
-    //        $rootScope.$broadcast("sendTestGuid", {
-    //            testForQuestion: test
-    //            });
-        
-            //}
-       
+        }   
         
         $scope.refresh();
 });
