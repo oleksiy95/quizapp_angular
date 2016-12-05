@@ -1,0 +1,22 @@
+﻿<h3 class="panel-heading">{{currentTest.Name}}</h3>
+<div class="panel-body">
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" ng-model="currentTest.Name" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" ng-model="currentTest.Description" />
+    </div>
+    <div class="form-group">
+        <label>Test limit</label>
+        <input class="form-control" ng-model="currentTest.TestTimeLimit" />
+    </div>
+    <div class="form-group">
+        <label>Question limit</label>
+        <input class="form-control" ng-model="currentTest.QuestionTimeLimit" />
+    </div>
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoader" />
+    <button class="btn btn-primary" ng-click="saveEdit(currentTest)">Save</button> 
+    <button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button> 
+</div>

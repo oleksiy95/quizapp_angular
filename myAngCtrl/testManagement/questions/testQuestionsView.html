@@ -1,0 +1,38 @@
+﻿<h3 class="panel-heading">{{testForQuestions.Name}} | Questions</h3>
+<div class="panel-body">
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoaderQuestions" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Instance</th>
+                <th>Hint</th>
+                <th>Validity</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="question in questions">
+                <td>{{question.Instance}}</td>
+                <td>{{question.Hint}}</td>                
+                <td><input type="checkbox" ng-checked="{{question.IsValid}}" disabled /></td>
+
+
+                <td class="text-center">
+                    <button class="btn btn-xs btn-primary" ng-click="getAnswers(question)">
+                        Answers
+                    </button>
+                    <button class="btn btn-xs btn-primary" ng-click="deleteQuestion(question)">
+                        Delete
+                    </button>
+                    <button class="btn btn-xs btn-primary" ng-click="editOrCreateQuestion(question)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-primary" ng-click="editOrCreateQuestion()">New</button>
+        <button class="btn btn-primary" ng-click="returnToTests()">Return to tests</button>
+    </div>
+</div>

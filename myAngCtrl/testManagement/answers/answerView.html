@@ -1,0 +1,33 @@
+﻿<h3 class="panel-heading">{{questionForAnswer.Instance}} | Answers</h3>
+<div class="panel-body">
+    <img src="../../Content/ajax-loader.gif" ng-show="showLoaderAnswers" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Instance</th>
+                
+                <th>Correct</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="answer in answers">
+                <td>{{answer.Instance}}</td>
+                
+                <td><input type="checkbox" ng-checked="{{answer.IsCorrect}}" disabled /></td>
+
+
+                <td class="text-center">
+                    
+                    <button class="btn btn-xs btn-primary" ng-click="deleteAnswer(answer)">
+                        Delete
+                    </button>                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-primary" ng-click="editOrCreateAnswer()">New</button>
+        <button class="btn btn-primary" ng-click="returnToQuestions()">Return to questions</button>
+    </div>
+</div>
