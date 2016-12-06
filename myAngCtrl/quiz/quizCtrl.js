@@ -1,5 +1,5 @@
 ﻿angular.module('quizApp')
- .controller("quizCtrl", function ($scope, $location, $requestService, $timerService) {
+ .controller("quizCtrl", function ($scope, $location, $requestService, $timerService, $recordAnswersService) {
 
      $scope.testPassing = {};
 
@@ -22,36 +22,40 @@
          });
      }     
      //functon for finding checked radio and checkbox and set true
-     $scope.findChecked = function () {
+     //$scope.findChecked = function () {
 
-         var i = 0;
-         var objectWasCreated = false;
-         $scope.testPassing.Questions = [];
-         for (question in $scope.testPass.Questions) {
+     //    var i = 0;
+     //    var objectWasCreated = false;
+     //    $scope.testPassing.Questions = [];
+     //    for (question in $scope.testPass.Questions) {
 
-             for (answer in $scope.testPass.Questions[question].Answers) {
+     //        for (answer in $scope.testPass.Questions[question].Answers) {
 
-                 if (document.getElementById($scope.testPass.Questions[question].Answers[answer].Guid).checked) {
-                     $scope.testPass.Questions[question].Answers[answer].IsSelected = true;
-                     if ($scope.testPassing.Questions[i] == undefined) {
-                         $scope.testPassing.Questions[i] = {};
-                         $scope.testPassing.Questions[i].QuestionGuid = $scope.testPass.Questions[question].Guid;
-                         $scope.testPassing.Questions[i].AnswersSelected = [];
-                         objectWasCreated = true;
+     //            if (document.getElementById($scope.testPass.Questions[question].Answers[answer].Guid).checked) {
+     //                $scope.testPass.Questions[question].Answers[answer].IsSelected = true;
+     //                if ($scope.testPassing.Questions[i] == undefined) {
+     //                    $scope.testPassing.Questions[i] = {};
+     //                    $scope.testPassing.Questions[i].QuestionGuid = $scope.testPass.Questions[question].Guid;
+     //                    $scope.testPassing.Questions[i].AnswersSelected = [];
+     //                    objectWasCreated = true;
 
-                     }
-                     $scope.testPassing.Questions[i].AnswersSelected.push($scope.testPass.Questions[question].Answers[answer].Guid);
-                 }
-             }
-             if (objectWasCreated)
-                 i++;
-             objectWasCreated = false
-         }
-     }
+     //                }
+     //                $scope.testPassing.Questions[i].AnswersSelected.push($scope.testPass.Questions[question].Answers[answer].Guid);
+     //            }
+     //        }
+     //        if (objectWasCreated)
+     //            i++;
+     //        objectWasCreated = false
+     //    }
+     //}
 
      $scope.finishTest = function () {
 
-         $scope.findChecked();
+         //$scope.findChecked();
+
+         $recordAnswersService.recordAnswers(function (data) {
+             $scope.testPassing.Questions = data;
+         }, $scope.testPass.Questions);
 
          $scope.EndDate = new Date();
          $scope.testPassing.TestingStartDateTime = $scope.StartDate;

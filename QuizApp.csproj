@@ -318,6 +318,7 @@
     <Content Include="myAngCtrl\resultManagement\resultCtrl.js" />
     <Content Include="myAngCtrl\resultManagement\resultRouteConfig.js" />
     <Content Include="myAngCtrl\resultManagement\resultView.html" />
+    <Content Include="myAngCtrl\services\recordAnswersService.js" />
     <Content Include="myAngCtrl\services\requestService.js" />
     <Content Include="myAngCtrl\services\timerService.js" />
     <Content Include="myAngCtrl\testingUrlManagement\testingUrlCtrl.js" />

@@ -50,6 +50,7 @@ namespace QuizApp
                "~/MyAngCtrl/quiz/quizRouteConfig.js",
                "~/MyAngCtrl/services/requestService.js",
                "~/MyAngCtrl/services/timerService.js",
+               "~/MyAngCtrl/services/recordAnswersService.js",
                "~/MyAngCtrl/quiz/quizCtrl.js"));
 
 
