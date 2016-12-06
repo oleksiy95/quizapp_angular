@@ -19,7 +19,7 @@
             <tr ng-repeat="result in results">
                 <td>{{result.TestName}}</td>
                 <td>{{result.Interviewee}}</td>
-                <td>{{result.Score.toFixed(2)}}</td>
+                <td>{{result.Score | number: 2}}</td>
                 <td>{{result.QuestionTried}} of {{result.TotalQuestions}}</td>
                 <td>{{result.Duration.slice(0,8)}}</td>
                 <td>{{result.TestingStartDateTime}}</td>
