@@ -1,5 +1,5 @@
 ﻿angular.module('quizApp')
- .controller("quizCtrl", function ($scope, $location, $timeout, $interval, $requestService) {
+ .controller("quizCtrl", function ($scope, $location, $requestService, $timerService) {
 
      $scope.testPassing = {};
 
@@ -8,41 +8,19 @@
      $scope.getInfo = function () {
          $scope.showLoader = true;
          $requestService.startTest($scope.testingUrlGuid, function (data) {
-         
-         //$http.get("/Quiz/GetInfoAndStartTest?testingUrlGuid=" + $scope.testingUrlGuid).success(function (data) {
+
              $scope.testPass = data;
              $scope.showLoader = false;
              $scope.hideInfo = true;
              $location.path("/startTest");
              $scope.StartDate = new Date();
-
-             //logic for finishining test if time is ended;
-             if ($scope.testPass.TestTimeLimit.TotalSeconds > 0) {
-                 $scope.TestTimeSeconds = $scope.testPass.TestTimeLimit.TotalSeconds;
-             }
-             else if ($scope.testPass.QuestionTimeLimit.TotalSeconds > 0) {
-                 $scope.TestTimeSeconds = $scope.testPass.QuestionTimeLimit.TotalSeconds;
-             }
-
-             if ($scope.TestTimeSeconds != undefined) {
-
-                 var TestTime = new Date(0, 0, 0, 0, 0, $scope.TestTimeSeconds);
-                 var TimeOut = $scope.TestTimeSeconds * 1000;
-
-                 $interval(function () {
-                     $scope.Timer = TestTime.getHours() + ":" + TestTime.getMinutes() + ":" + TestTime.getSeconds();
-                     $scope.TestTimeSeconds = $scope.TestTimeSeconds - 1;
-                     TestTime = new Date(0, 0, 0, 0, 0, $scope.TestTimeSeconds);
-                 }, 1000);
-
-                 $timeout(function () {
-                     $scope.finishTest();
-                 }, TimeOut + 1000);
-
-             }
-
-
-     });
+             //logic for timer and test finish
+             $timerService.timerTick(function (testTime) {
+                 $scope.Timer = testTime;
+             }, function () {
+                 $scope.finishTest();
+             }, $scope.testPass.TestTimeLimit.TotalSeconds, $scope.testPass.QuestionTimeLimit.TotalSeconds, $scope.testPass.Questions.length);
+         });
      }
 
 
