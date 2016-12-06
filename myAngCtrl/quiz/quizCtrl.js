@@ -3,7 +3,6 @@
 
      $scope.testPassing = {};
 
-
      //get tests info and start test
      $scope.getInfo = function () {
          $scope.showLoader = true;
@@ -21,15 +20,7 @@
                  $scope.finishTest();
              }, $scope.testPass.TestTimeLimit.TotalSeconds, $scope.testPass.QuestionTimeLimit.TotalSeconds, $scope.testPass.Questions.length);
          });
-     }
-
-
-     //fucntion for definition input type
-     $scope.whatType = function (multiple) {
-         if (multiple)
-             return 'checkbox'
-         else return 'radio'
-     }
+     }     
      //functon for finding checked radio and checkbox and set true
      $scope.findChecked = function () {
 
